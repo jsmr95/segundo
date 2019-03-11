@@ -42,7 +42,7 @@ AppAsset::register($this);
             Yii::$app->user->isGuest ? (
                 ['label' => 'Citas', 'url' => ['/citas/index']]
             ) : (
-                ['label' => 'Citas', 'url' => ['/citas/vercitas', 'id' => Yii::$app->user->id]]
+                ['label' => 'Citas', 'url' => ['/citas/vercitas']]
             )
         ,
             Yii::$app->user->isGuest ? (

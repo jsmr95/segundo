@@ -127,13 +127,12 @@ class CitasController extends Controller
 
     /**
      * Ver citas de un usuario.
-     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionVercitas($id)
+    public function actionVercitas()
     {
-        $searchModel = new CitasSearch(['usuario_id' => $id]);
+        $searchModel = new CitasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

@@ -24,14 +24,35 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'usuario_id',
-            'especialista_id',
-            'instante',
+            // 'id',
+            // 'usuario_id',
+            // 'especialista_id',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            'especialista.especialidad.especialidad',
+            'especialista.nombre',
+            [ 'attribute' => 'instante',
+                'format' => 'datetime',
+                'filter' => Html::activeInput(
+                    'datetime-local',
+                    $searchModel,
+                    'instante',
+                    ['class' => 'form-control']
+                    )
+            ],
+            ['class' => 'yii\grid\ActionColumn',
+            'buttons' =>[
+                'delete' => function($url, $model, $key) {
+                    return Html::a(
+                        'Anular',
+                        ['citas/delete', 'id' => $model->id],
+                        [
+                            'data-method' => 'POST',
+                            'data-confirm' => '¿Seguro que deseas anular la cita?',
+                        ]
+                    );
+                }
+                ]],
         ],
     ]); ?>
 
